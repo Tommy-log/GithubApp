@@ -13,9 +13,7 @@
 		CE5056EF288AF68800222576 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5056EE288AF68800222576 /* APIService.swift */; };
 		CE5056F1288AF6EA00222576 /* RepositoryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5056F0288AF6EA00222576 /* RepositoryDTO.swift */; };
 		CE7D761E26B14071002B98BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D761D26B14071002B98BC /* AppDelegate.swift */; };
-		CE7D762026B14071002B98BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D761F26B14071002B98BC /* SceneDelegate.swift */; };
 		CE7D762226B14071002B98BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D762126B14071002B98BC /* ViewController.swift */; };
-		CE7D762526B14071002B98BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7D762326B14071002B98BC /* Main.storyboard */; };
 		CE7D762726B14072002B98BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7D762626B14072002B98BC /* Assets.xcassets */; };
 		CE7D762A26B14072002B98BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7D762826B14072002B98BC /* LaunchScreen.storyboard */; };
 		CE7D765D26B14A07002B98BC /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D765C26B14A07002B98BC /* ViewModel.swift */; };
@@ -49,9 +47,7 @@
 		CE5056F0288AF6EA00222576 /* RepositoryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDTO.swift; sourceTree = "<group>"; };
 		CE7D761A26B14071002B98BC /* RxSwiftMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwiftMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7D761D26B14071002B98BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE7D761F26B14071002B98BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CE7D762126B14071002B98BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CE7D762426B14071002B98BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE7D762626B14072002B98BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE7D762926B14072002B98BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE7D762B26B14072002B98BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -128,10 +124,8 @@
 			isa = PBXGroup;
 			children = (
 				CE7D761D26B14071002B98BC /* AppDelegate.swift */,
-				CE7D761F26B14071002B98BC /* SceneDelegate.swift */,
 				CE7D762126B14071002B98BC /* ViewController.swift */,
 				CE7D765C26B14A07002B98BC /* ViewModel.swift */,
-				CE7D762326B14071002B98BC /* Main.storyboard */,
 				CE7D762626B14072002B98BC /* Assets.xcassets */,
 				CE7D762826B14072002B98BC /* LaunchScreen.storyboard */,
 				CE7D762B26B14072002B98BC /* Info.plist */,
@@ -259,7 +253,6 @@
 			files = (
 				CE7D762A26B14072002B98BC /* LaunchScreen.storyboard in Resources */,
 				CE7D762726B14072002B98BC /* Assets.xcassets in Resources */,
-				CE7D762526B14071002B98BC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,7 +350,6 @@
 				CE5056EF288AF68800222576 /* APIService.swift in Sources */,
 				CE7D761E26B14071002B98BC /* AppDelegate.swift in Sources */,
 				CE7D765D26B14A07002B98BC /* ViewModel.swift in Sources */,
-				CE7D762026B14071002B98BC /* SceneDelegate.swift in Sources */,
 				CE5056F1288AF6EA00222576 /* RepositoryDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,14 +384,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CE7D762326B14071002B98BC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CE7D762426B14071002B98BC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CE7D762826B14072002B98BC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -535,6 +519,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = RxSwiftMVVM/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -554,6 +539,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = RxSwiftMVVM/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

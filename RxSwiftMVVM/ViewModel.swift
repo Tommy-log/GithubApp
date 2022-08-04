@@ -15,54 +15,48 @@ protocol ViewModelType {
     func transform(input: Input) -> Output
 }
 
-class ViewModule: ViewModelType {
+class ViewModel: ViewModelType {
     
-    weak var viewController: ViewController?
-    var searchSecondText = BehaviorSubject(value: "")
     private let disposeBug = DisposeBag()
     private var APIServiceProvider: APIServiceProvider
-    var data: Driver<[RepositoryDTO]>
+    let itemsPublish = PublishSubject<[RepositoryDTO]>()
     
-    init(viewController: ViewController, api: APIServiceProvider) {
-        self.viewController = viewController
+    init(api: APIServiceProvider) {
         self.APIServiceProvider = api
-
-        data = searchSecondText.throttle(.seconds(1), scheduler: MainScheduler.instance)
-            .distinctUntilChanged()
-            .flatMapLatest({
-            api.getRepositories(repoID: $0)
-            }).asDriver(onErrorJustReturn: [])
         
-            data.drive(onNext: { repositroies in
-                print(repositroies)
-            }, onCompleted: {
-                print("completed")
-            }, onDisposed: {
-                print("disposed")
-            }).disposed(by: disposeBug)
-
-        searchSecondText.subscribe {
-            print($0)
-        }.disposed(by: disposeBug)
     }
     struct Input {
-        var myButtonTap: Signal<Void>
-        var text: Driver<String?>
-        var secondText: Driver<String?>
+        var myButtonTap: Observable<Void>
+        var text: Observable<String>
+        var tableViewCellSelected: Observable<IndexPath>
     }
     
     struct Output {
-        var text: Driver<String?>
-        var searchSecondText: BehaviorSubject<String>
-        var tapButton: Signal<Void>
-        var data: Driver<[RepositoryDTO]>
+        var greeting: Driver<String>
+        var selectedItemForIndexPath: Driver<String>
+    }
+    
+    func featchItems() {
+        let repositories = [
+            RepositoryDTO(name: "repo 1", url: "url ..."),
+            RepositoryDTO(name: "repo 2", url: "url ..."),
+            RepositoryDTO(name: "repo 3", url: "url ..."),
+            RepositoryDTO(name: "repo 4", url: "url ..."),
+            RepositoryDTO(name: "repo 5", url: "url ..."),
+            RepositoryDTO(name: "repo 6", url: "url ..."),
+            RepositoryDTO(name: "repo 7", url: "url ...")
+        ]
+        itemsPublish.onNext(repositories)
+        itemsPublish.onCompleted()
     }
     
     func transform(input: Input) -> Output {
-        return Output(text: Driver.merge([input.text]).map({ return $0?.replacingOccurrences(of: "suka", with: "XXXX")}),
-                      searchSecondText: searchSecondText,
-        tapButton: input.myButtonTap.asSignal().do(onNext: {
-            print("tap")
-        }), data: data)
+        return Output(greeting: input.myButtonTap.withLatestFrom(input.text).map({ text in
+            return "Hello \(text)"
+        }).asDriver(onErrorJustReturn: "Error"),
+                      selectedItemForIndexPath: input.tableViewCellSelected.map({
+            return "indexPath is: \($0)"
+        }).asDriver(onErrorJustReturn: "ERROR")
+        )
     }
 }
