@@ -7,6 +7,7 @@
 
 import RxCocoa
 import RxSwift
+import Foundation
 
 protocol ViewModelType {
     associatedtype Input
@@ -18,13 +19,17 @@ protocol ViewModelType {
 class ViewModel: ViewModelType {
     
     private let disposeBug = DisposeBag()
-    private var APIServiceProvider: APIServiceProvider
-    let itemsPublish = PublishSubject<[RepositoryDTO]>()
+    private var githubService: GihubService
+    var itemsPublish = PublishSubject<[RepositoryDTO]>()
+    private let loadStateActivatePublish = PublishSubject<Bool>()
+    private let showHintPublish = PublishSubject<Bool>()
+    var repositoriesData: Driver<[RepositoryDTO]>?
+    var allRepositories: [RepositoryDTO] = []
     
-    init(api: APIServiceProvider) {
-        self.APIServiceProvider = api
-        
+    init(api: GihubService) {
+        self.githubService = api
     }
+    
     struct Input {
         var myButtonTap: Observable<Void>
         var text: Observable<String>
@@ -32,31 +37,24 @@ class ViewModel: ViewModelType {
     }
     
     struct Output {
-        var greeting: Driver<String>
-        var selectedItemForIndexPath: Driver<String>
-    }
-    
-    func featchItems() {
-        let repositories = [
-            RepositoryDTO(name: "repo 1", url: "url ..."),
-            RepositoryDTO(name: "repo 2", url: "url ..."),
-            RepositoryDTO(name: "repo 3", url: "url ..."),
-            RepositoryDTO(name: "repo 4", url: "url ..."),
-            RepositoryDTO(name: "repo 5", url: "url ..."),
-            RepositoryDTO(name: "repo 6", url: "url ..."),
-            RepositoryDTO(name: "repo 7", url: "url ...")
-        ]
-        itemsPublish.onNext(repositories)
-        itemsPublish.onCompleted()
+        var activateLoadStatePublisher: Observable<Bool>
+        var showHintPublisher: Observable<Bool>
     }
     
     func transform(input: Input) -> Output {
-        return Output(greeting: input.myButtonTap.withLatestFrom(input.text).map({ text in
-            return "Hello \(text)"
-        }).asDriver(onErrorJustReturn: "Error"),
-                      selectedItemForIndexPath: input.tableViewCellSelected.map({
-            return "indexPath is: \($0)"
-        }).asDriver(onErrorJustReturn: "ERROR")
-        )
+        self.repositoriesData = input.text.throttle(.seconds(1), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .flatMapLatest({ text -> Observable<[RepositoryDTO]> in
+                let completion = { self.loadStateActivatePublish.onNext(false) }
+                if text.isEmpty {
+                    self.loadStateActivatePublish.onNext(false)
+                    self.showHintPublish.onNext(true)
+                    return .just([])
+                }
+                self.loadStateActivatePublish.onNext(true)
+                self.showHintPublish.onNext(false)
+               return self.githubService.getRepositories(repoID: text, completion: completion)
+            }).asDriver(onErrorJustReturn: [])
+        return Output(activateLoadStatePublisher: loadStateActivatePublish, showHintPublisher: showHintPublish)
     }
 }
