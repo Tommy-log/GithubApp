@@ -1,8 +1,8 @@
 //
-//  ViewController.swift
+//  SearchViewController.swift
 //  RxSwiftMVVM
 //
-//  Created by User on 28.07.2021.
+//  Created by User on 15.08.2022.
 //
 
 import UIKit
@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 
-class ViewController: UIViewController {
+class SearchViewController: UIViewController {
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -46,12 +46,11 @@ class ViewController: UIViewController {
     
     private var tableViewTopConstraint: NSLayoutConstraint?
     
-    private var viewModel: ViewModel?
+    private var viewModel: SearchViewModel?
     private let disposedBag = DisposeBag()
-    private let appServices: ApiProvider
     
-    init(appServices: ApiProvider) {
-        self.appServices = appServices
+    init(viewModel: SearchViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -62,7 +61,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        self.viewModel = ViewModel(api: appServices.githubService())
         bind()
         bindTableView()
         circleAnimate()
@@ -110,7 +108,7 @@ class ViewController: UIViewController {
         ])
     }
     private func bind() {
-        let input = ViewModel.Input(
+        let input = SearchViewModel.Input(
             myButtonTap: myButton.rx.tap.asObservable(), text: myTextField.rx.text.orEmpty.asObservable(),
             tableViewCellSelected: tableView.rx.itemSelected.asObservable()
         )
@@ -131,6 +129,11 @@ class ViewController: UIViewController {
             return
         }
         
+        tableView.rx.itemSelected.subscribe { [unowned self] in
+            guard let indexPath = $0.element else { return }
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        }.disposed(by: disposedBag)
+        
         guard let data = viewModel.repositoriesData else { return }
         data.asObservable().bind(to: tableView.rx.items(cellIdentifier: "basicCell", cellType: UITableViewCell.self)) { identifire, repository, cell in
             cell.textLabel?.text = repository.name
@@ -147,7 +150,8 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDelegate {
+extension SearchViewController: UITableViewDelegate {
     
 }
+
 

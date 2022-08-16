@@ -15,7 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
           window = UIWindow(frame: UIScreen.main.bounds)
           let applicationServices = ApiProvider()
-          let root = ViewController(appServices: applicationServices)
+          let searchRouter = SearchRouter(appService: applicationServices)
+          let root = searchRouter.initScene()
           root.view.backgroundColor = .white
           window?.rootViewController = root
           window?.makeKeyAndVisible()

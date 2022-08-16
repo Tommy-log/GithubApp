@@ -18,10 +18,12 @@
 		CE6B72F4289EC456007E958D /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B72F3289EC456007E958D /* Path.swift */; };
 		CE6B72F6289EC4BE007E958D /* ApiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B72F5289EC4BD007E958D /* ApiProvider.swift */; };
 		CE7D761E26B14071002B98BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D761D26B14071002B98BC /* AppDelegate.swift */; };
-		CE7D762226B14071002B98BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D762126B14071002B98BC /* ViewController.swift */; };
 		CE7D762726B14072002B98BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7D762626B14072002B98BC /* Assets.xcassets */; };
 		CE7D762A26B14072002B98BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7D762826B14072002B98BC /* LaunchScreen.storyboard */; };
-		CE7D765D26B14A07002B98BC /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D765C26B14A07002B98BC /* ViewModel.swift */; };
+		CEC7D5E028AABE0D005C220C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC7D5DF28AABE0D005C220C /* SearchViewController.swift */; };
+		CEC7D5E228AABE1B005C220C /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC7D5E128AABE1B005C220C /* SearchViewModel.swift */; };
+		CEC7D5E428AABE29005C220C /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC7D5E328AABE29005C220C /* SearchRouter.swift */; };
+		CEC7D5E628AAC024005C220C /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC7D5E528AAC024005C220C /* BaseRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,13 +59,15 @@
 		CE6B72F5289EC4BD007E958D /* ApiProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiProvider.swift; sourceTree = "<group>"; };
 		CE7D761A26B14071002B98BC /* RxSwiftMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwiftMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7D761D26B14071002B98BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE7D762126B14071002B98BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CE7D762626B14072002B98BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE7D762926B14072002B98BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE7D762B26B14072002B98BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE7D763026B14072002B98BC /* RxSwiftMVVMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwiftMVVMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7D763B26B14072002B98BC /* RxSwiftMVVMUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwiftMVVMUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE7D765C26B14A07002B98BC /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		CEC7D5DF28AABE0D005C220C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		CEC7D5E128AABE1B005C220C /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		CEC7D5E328AABE29005C220C /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
+		CEC7D5E528AAC024005C220C /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		D343D4F2FA9FBEA82CBE925B /* Pods-RxSwiftMVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftMVVM.debug.xcconfig"; path = "Target Support Files/Pods-RxSwiftMVVM/Pods-RxSwiftMVVM.debug.xcconfig"; sourceTree = "<group>"; };
 		E61A4FFDE8F3DB67151DB472 /* libPods-RxSwiftMVVM-RxSwiftMVVMUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RxSwiftMVVM-RxSwiftMVVMUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E68FBAE2D0A4D14D779AF0FA /* Pods-RxSwiftMVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftMVVM.release.xcconfig"; path = "Target Support Files/Pods-RxSwiftMVVM/Pods-RxSwiftMVVM.release.xcconfig"; sourceTree = "<group>"; };
@@ -171,15 +175,33 @@
 		CE7D761C26B14071002B98BC /* RxSwiftMVVM */ = {
 			isa = PBXGroup;
 			children = (
+				CEC7D5DD28AABDE2005C220C /* Scenes */,
 				CE6B72E5289EA5A7007E958D /* NetworkLayer */,
 				CE7D761D26B14071002B98BC /* AppDelegate.swift */,
-				CE7D762126B14071002B98BC /* ViewController.swift */,
-				CE7D765C26B14A07002B98BC /* ViewModel.swift */,
 				CE7D762626B14072002B98BC /* Assets.xcassets */,
 				CE7D762826B14072002B98BC /* LaunchScreen.storyboard */,
 				CE7D762B26B14072002B98BC /* Info.plist */,
 			);
 			path = RxSwiftMVVM;
+			sourceTree = "<group>";
+		};
+		CEC7D5DD28AABDE2005C220C /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				CEC7D5DE28AABDF5005C220C /* SearchScene */,
+				CEC7D5E528AAC024005C220C /* BaseRouter.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		CEC7D5DE28AABDF5005C220C /* SearchScene */ = {
+			isa = PBXGroup;
+			children = (
+				CEC7D5DF28AABE0D005C220C /* SearchViewController.swift */,
+				CEC7D5E128AABE1B005C220C /* SearchViewModel.swift */,
+				CEC7D5E328AABE29005C220C /* SearchRouter.swift */,
+			);
+			path = SearchScene;
 			sourceTree = "<group>";
 		};
 		E48071A52D1A4ED9D9BD7F26 /* Frameworks */ = {
@@ -393,12 +415,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE7D762226B14071002B98BC /* ViewController.swift in Sources */,
+				CEC7D5E428AABE29005C220C /* SearchRouter.swift in Sources */,
+				CEC7D5E028AABE0D005C220C /* SearchViewController.swift in Sources */,
 				CE6B72EB289EA603007E958D /* RepositoryOwnerDTO.swift in Sources */,
 				CE6B72F2289EC3E5007E958D /* GithubService.swift in Sources */,
 				CE6B72F0289EC352007E958D /* BaseServiceProtocol.swift in Sources */,
 				CE7D761E26B14071002B98BC /* AppDelegate.swift in Sources */,
-				CE7D765D26B14A07002B98BC /* ViewModel.swift in Sources */,
+				CEC7D5E228AABE1B005C220C /* SearchViewModel.swift in Sources */,
+				CEC7D5E628AAC024005C220C /* BaseRouter.swift in Sources */,
 				CE6B72E9289EA5E9007E958D /* RepositoryDTO.swift in Sources */,
 				CE6B72F6289EC4BE007E958D /* ApiProvider.swift in Sources */,
 				CE6B72F4289EC456007E958D /* Path.swift in Sources */,

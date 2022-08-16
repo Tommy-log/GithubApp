@@ -1,8 +1,8 @@
 //
-//  ViewModel.swift
+//  SearchViewModel.swift
 //  RxSwiftMVVM
 //
-//  Created by User on 28.07.2021.
+//  Created by User on 15.08.2022.
 //
 
 import RxCocoa
@@ -16,7 +16,7 @@ protocol ViewModelType {
     func transform(input: Input) -> Output
 }
 
-class ViewModel: ViewModelType {
+class SearchViewModel: ViewModelType {
     
     private let disposeBug = DisposeBag()
     private var githubService: GihubService
@@ -58,3 +58,4 @@ class ViewModel: ViewModelType {
         return Output(activateLoadStatePublisher: loadStateActivatePublish, showHintPublisher: showHintPublish)
     }
 }
+
