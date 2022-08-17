@@ -37,10 +37,10 @@ class SearchViewController: UIViewController {
         return textField
     }()
     
-    private lazy var loaderView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "premium-icon-refresh")
-        imageView.isHidden = true
+    private lazy var infoButton = UIBarButtonItem(image: UIImage(named: "infoIcon")?.withTintColor(.black), style: .plain, target: nil, action: nil)
+    
+    private lazy var loaderView: LoaderView = {
+        let imageView = LoaderView()
         return imageView
     }()
     
@@ -63,15 +63,20 @@ class SearchViewController: UIViewController {
         setupView()
         bind()
         bindTableView()
-        circleAnimate()
+        setupNavigationView()
+    }
+    
+    func setupNavigationView() {
+        self.title = "REPOS SEARCHING"
+        self.navigationItem.rightBarButtonItem = infoButton
     }
     
     func activateLoadState(_ isActive: Bool) {
         guard let tableViewTopConstraint = tableViewTopConstraint else { return }
+        loaderView.showLoader(isActive)
         self.view.layoutSubviews()
         UIView.animate(withDuration: 0.2) {
             tableViewTopConstraint.constant = isActive ? 40 : 0
-            self.loaderView.isHidden = !isActive
             self.view.layoutSubviews()
         }
     }
@@ -109,7 +114,9 @@ class SearchViewController: UIViewController {
     }
     private func bind() {
         let input = SearchViewModel.Input(
-            myButtonTap: myButton.rx.tap.asObservable(), text: myTextField.rx.text.orEmpty.asObservable(),
+            myButtonTap: myButton.rx.tap.asObservable(),
+            infoButtonTap: infoButton.rx.tap.asObservable(),
+            text: myTextField.rx.text.orEmpty.asObservable(),
             tableViewCellSelected: tableView.rx.itemSelected.asObservable()
         )
         let output = viewModel!.transform(input: input)
@@ -137,16 +144,7 @@ class SearchViewController: UIViewController {
         guard let data = viewModel.repositoriesData else { return }
         data.asObservable().bind(to: tableView.rx.items(cellIdentifier: "basicCell", cellType: UITableViewCell.self)) { identifire, repository, cell in
             cell.textLabel?.text = repository.name
-            
         }.disposed(by: disposedBag)
-    }
-    private func circleAnimate() {
-        let rotation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-           rotation.toValue = -Double.pi * 3
-           rotation.duration = 1
-           rotation.isCumulative = true
-           rotation.repeatCount = Float.greatestFiniteMagnitude
-           loaderView.layer.add(rotation, forKey: "rotationAnimation")
     }
 }
 

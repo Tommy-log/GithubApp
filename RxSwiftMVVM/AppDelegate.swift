@@ -17,8 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           let applicationServices = ApiProvider()
           let searchRouter = SearchRouter(appService: applicationServices)
           let root = searchRouter.initScene()
+          let navigationController = UINavigationController(rootViewController: root)
           root.view.backgroundColor = .white
-          window?.rootViewController = root
+          window?.rootViewController = navigationController
           window?.makeKeyAndVisible()
           return true
       }

@@ -25,6 +25,7 @@ class SearchViewModel: ViewModelType {
     private let showHintPublish = PublishSubject<Bool>()
     var repositoriesData: Driver<[RepositoryDTO]>?
     var allRepositories: [RepositoryDTO] = []
+    private var isInfoHidden = false
     
     init(api: GihubService) {
         self.githubService = api
@@ -32,6 +33,7 @@ class SearchViewModel: ViewModelType {
     
     struct Input {
         var myButtonTap: Observable<Void>
+        var infoButtonTap: Observable<Void>
         var text: Observable<String>
         var tableViewCellSelected: Observable<IndexPath>
     }
@@ -55,6 +57,7 @@ class SearchViewModel: ViewModelType {
                 self.showHintPublish.onNext(false)
                return self.githubService.getRepositories(repoID: text, completion: completion)
             }).asDriver(onErrorJustReturn: [])
+        
         return Output(activateLoadStatePublisher: loadStateActivatePublish, showHintPublisher: showHintPublish)
     }
 }

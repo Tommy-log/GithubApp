@@ -24,6 +24,7 @@
 		CEC7D5E228AABE1B005C220C /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC7D5E128AABE1B005C220C /* SearchViewModel.swift */; };
 		CEC7D5E428AABE29005C220C /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC7D5E328AABE29005C220C /* SearchRouter.swift */; };
 		CEC7D5E628AAC024005C220C /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC7D5E528AAC024005C220C /* BaseRouter.swift */; };
+		CEC7D5E928AD325F005C220C /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC7D5E828AD325F005C220C /* LoaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		CEC7D5E128AABE1B005C220C /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		CEC7D5E328AABE29005C220C /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		CEC7D5E528AAC024005C220C /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
+		CEC7D5E828AD325F005C220C /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		D343D4F2FA9FBEA82CBE925B /* Pods-RxSwiftMVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftMVVM.debug.xcconfig"; path = "Target Support Files/Pods-RxSwiftMVVM/Pods-RxSwiftMVVM.debug.xcconfig"; sourceTree = "<group>"; };
 		E61A4FFDE8F3DB67151DB472 /* libPods-RxSwiftMVVM-RxSwiftMVVMUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RxSwiftMVVM-RxSwiftMVVMUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E68FBAE2D0A4D14D779AF0FA /* Pods-RxSwiftMVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftMVVM.release.xcconfig"; path = "Target Support Files/Pods-RxSwiftMVVM/Pods-RxSwiftMVVM.release.xcconfig"; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 		CE7D761C26B14071002B98BC /* RxSwiftMVVM */ = {
 			isa = PBXGroup;
 			children = (
+				CEC7D5E728AD324D005C220C /* UIComponents */,
 				CEC7D5DD28AABDE2005C220C /* Scenes */,
 				CE6B72E5289EA5A7007E958D /* NetworkLayer */,
 				CE7D761D26B14071002B98BC /* AppDelegate.swift */,
@@ -202,6 +205,14 @@
 				CEC7D5E328AABE29005C220C /* SearchRouter.swift */,
 			);
 			path = SearchScene;
+			sourceTree = "<group>";
+		};
+		CEC7D5E728AD324D005C220C /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				CEC7D5E828AD325F005C220C /* LoaderView.swift */,
+			);
+			path = UIComponents;
 			sourceTree = "<group>";
 		};
 		E48071A52D1A4ED9D9BD7F26 /* Frameworks */ = {
@@ -418,6 +429,7 @@
 				CEC7D5E428AABE29005C220C /* SearchRouter.swift in Sources */,
 				CEC7D5E028AABE0D005C220C /* SearchViewController.swift in Sources */,
 				CE6B72EB289EA603007E958D /* RepositoryOwnerDTO.swift in Sources */,
+				CEC7D5E928AD325F005C220C /* LoaderView.swift in Sources */,
 				CE6B72F2289EC3E5007E958D /* GithubService.swift in Sources */,
 				CE6B72F0289EC352007E958D /* BaseServiceProtocol.swift in Sources */,
 				CE7D761E26B14071002B98BC /* AppDelegate.swift in Sources */,
