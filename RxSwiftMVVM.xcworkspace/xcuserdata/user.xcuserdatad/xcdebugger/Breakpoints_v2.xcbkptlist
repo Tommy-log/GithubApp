@@ -158,8 +158,8 @@
             filePath = "RxSwiftMVVM/Scenes/SearchScene/SearchViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "bind()"
             landmarkType = "7">
          </BreakpointContent>

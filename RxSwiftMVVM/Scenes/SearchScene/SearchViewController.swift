@@ -81,7 +81,7 @@ class SearchViewController: UIViewController {
         }
     }
     private func setupView() {
-        [tableView, myButton, myTextField, loaderView, informLabel].forEach({
+        [tableView, myTextField, loaderView, informLabel].forEach({
             $0.translatesAutoresizingMaskIntoConstraints = false
             self.view.addSubview($0)
         })
@@ -101,15 +101,10 @@ class SearchViewController: UIViewController {
             myTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -16),
             myTextField.heightAnchor.constraint(equalToConstant: 48),
             
-            myButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8),
-            myButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            myButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            myButton.heightAnchor.constraint(equalToConstant: 48),
-            
             topTableViewContraint,
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: myButton.topAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     private func bind() {
