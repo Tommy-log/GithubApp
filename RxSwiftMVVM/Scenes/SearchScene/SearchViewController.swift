@@ -115,14 +115,17 @@ class SearchViewController: UIViewController {
             tableViewCellSelected: tableView.rx.itemSelected.asObservable()
         )
         let output = viewModel!.transform(input: input)
-        output.activateLoadStatePublisher.debounce(.seconds(0), scheduler: MainScheduler.instance).subscribe { [unowned self] isActive in
+        output.activateLoadStatePublisher
+            .debounce(.seconds(0), scheduler: MainScheduler.instance)
+            .subscribe { [unowned self] isActive in
             guard let isActive = isActive.element else { return }
             self.activateLoadState(isActive)
         }.disposed(by: disposedBag)
-        output.showHintPublisher.debounce(.seconds(0), scheduler: MainScheduler.instance).subscribe { [unowned self] isShow in
-            guard let isShow = isShow.element else { return }
-            self.informLabel.isHidden = !isShow
-        }.disposed(by: disposedBag)
+        output.showHintPublisher
+            .debounce(.seconds(0), scheduler: MainScheduler.instance)
+            .map({ !$0 })
+            .bind(to: informLabel.rx.isHidden)
+            .disposed(by: disposedBag)
     }
     
     private func bindTableView() {
