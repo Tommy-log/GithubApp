@@ -9,21 +9,26 @@ import UIKit
 
 protocol SearchRouterProtocol: BaseRouter {
     func initScene() -> UIViewController
-    func pushSecond()
+    func pushDetail(injectedModel: RepositoryOwnerDTO)
 }
 
 public final class SearchRouter: SearchRouterProtocol {
     
     let appService: ApiProvider
-    init(appService: ApiProvider) {
+    let segueToDetail: ((RepositoryOwnerDTO) -> Void)
+    
+    init(appService: ApiProvider, segueToDetail: @escaping ((RepositoryOwnerDTO) -> Void)) {
         self.appService = appService
+        self.segueToDetail = segueToDetail
     }
     public func initScene() -> UIViewController {
         let viewModel = SearchViewModel(api: appService.githubService())
         let vc = SearchViewController(viewModel: viewModel)
+        vc.setRouter(router: self)
         return vc
     }
     
-    public func pushSecond() {
+    public func pushDetail(injectedModel: RepositoryOwnerDTO) {
+        segueToDetail(injectedModel)
     }
 }

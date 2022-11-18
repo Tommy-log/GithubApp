@@ -8,6 +8,6 @@
 import Foundation
 import UIKit
 
-protocol BaseRouter {
+protocol BaseRouter: AnyObject {
     func initScene() -> UIViewController
 }

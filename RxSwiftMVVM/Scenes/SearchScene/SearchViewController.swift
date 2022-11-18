@@ -47,6 +47,7 @@ class SearchViewController: UIViewController {
     private var tableViewTopConstraint: NSLayoutConstraint?
     
     private var viewModel: SearchViewModel?
+    private var router: SearchRouterProtocol?
     private let disposedBag = DisposeBag()
     
     init(viewModel: SearchViewModel) {
@@ -58,12 +59,20 @@ class SearchViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        print("DEINIT VC")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         bind()
         bindTableView()
         setupNavigationView()
+    }
+    
+    func setRouter(router: SearchRouterProtocol) {
+        self.router = router
     }
     
     func setupNavigationView() {
@@ -134,12 +143,11 @@ class SearchViewController: UIViewController {
             return
         }
         
-        tableView.rx.itemSelected.subscribe { [unowned self] in
-            guard let indexPath = $0.element else { return }
-            self.tableView.deselectRow(at: indexPath, animated: true)
-        }.disposed(by: disposedBag)
-        
         guard let data = viewModel.repositoriesData else { return }
+        tableView.rx.modelSelected(RepositoryDTO.self).subscribe { event in
+            guard let injectedModel = event.element?.owner else { return }
+            self.router?.pushDetail(injectedModel: injectedModel)
+        }.disposed(by: disposedBag)
         data.asObservable().bind(to: tableView.rx.items(cellIdentifier: "basicCell", cellType: UITableViewCell.self)) { identifire, repository, cell in
             cell.textLabel?.text = repository.name
         }.disposed(by: disposedBag)

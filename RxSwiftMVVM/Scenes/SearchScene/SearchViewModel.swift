@@ -9,13 +9,6 @@ import RxCocoa
 import RxSwift
 import Foundation
 
-protocol ViewModelType {
-    associatedtype Input
-    associatedtype Output
-    
-    func transform(input: Input) -> Output
-}
-
 class SearchViewModel: ViewModelType {
     
     private let disposeBug = DisposeBag()
@@ -24,7 +17,6 @@ class SearchViewModel: ViewModelType {
     private let loadStateActivatePublish = PublishSubject<Bool>()
     private let showHintPublish = PublishSubject<Bool>()
     var repositoriesData: Driver<[RepositoryDTO]>?
-    var allRepositories: [RepositoryDTO] = []
     private var isInfoHidden = false
     
     init(api: GihubService) {
@@ -57,6 +49,14 @@ class SearchViewModel: ViewModelType {
                 self.showHintPublish.onNext(false)
                return self.githubService.getRepositories(repoID: text, completion: completion)
             }).asDriver(onErrorJustReturn: [])
+        
+        
+//        let tableViewTap = input.tableViewCellSelected.flatMapLatest { indexPath -> Observable<RepositoryOwnerDTO> in
+//            return Observable.create { observer in
+//                observer.onNext(self.allRepositories[indexPath.row].owner)
+//                return Disposables.create()
+//            }
+//        }
         
         return Output(activateLoadStatePublisher: loadStateActivatePublish, showHintPublisher: showHintPublish)
     }

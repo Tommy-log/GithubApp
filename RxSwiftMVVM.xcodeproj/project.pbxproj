@@ -10,6 +10,10 @@
 		130F9571D4F0445F00BDCA9D /* libPods-RxSwiftMVVMTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFAABC813925A814E1E24E40 /* libPods-RxSwiftMVVMTests.a */; };
 		4B85CF9FC7A2DE73EC52BD76 /* libPods-RxSwiftMVVM-RxSwiftMVVMUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E61A4FFDE8F3DB67151DB472 /* libPods-RxSwiftMVVM-RxSwiftMVVMUITests.a */; };
 		CD2FF39D7B15A888DF206BC5 /* libPods-RxSwiftMVVM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CB8B980647A0C552F4915D /* libPods-RxSwiftMVVM.a */; };
+		CE090F1028E4BD6200FF0F34 /* GitnubDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE090F0F28E4BD6200FF0F34 /* GitnubDetailViewController.swift */; };
+		CE090F1228E4BD6C00FF0F34 /* GitnubDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE090F1128E4BD6C00FF0F34 /* GitnubDetailViewModel.swift */; };
+		CE090F1428E4BD7500FF0F34 /* GitnubDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE090F1328E4BD7500FF0F34 /* GitnubDetailRouter.swift */; };
+		CE090F1728E4BDD200FF0F34 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE090F1628E4BDD200FF0F34 /* ViewModelType.swift */; };
 		CE19983628B3C8A300C06F24 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19983528B3C8A300C06F24 /* MainCoordinator.swift */; };
 		CE19983B28B3CD8700C06F24 /* GithubCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19983A28B3CD8700C06F24 /* GithubCoordinator.swift */; };
 		CE19983D28B3D6FD00C06F24 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19983C28B3D6FD00C06F24 /* CoordinatorProtocol.swift */; };
@@ -54,6 +58,10 @@
 		84C22A6DD565D70018481B07 /* Pods-RxSwiftMVVMTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftMVVMTests.debug.xcconfig"; path = "Target Support Files/Pods-RxSwiftMVVMTests/Pods-RxSwiftMVVMTests.debug.xcconfig"; sourceTree = "<group>"; };
 		88A3FF9F848FADC27CBF0DAB /* Pods-RxSwiftMVVMTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftMVVMTests.release.xcconfig"; path = "Target Support Files/Pods-RxSwiftMVVMTests/Pods-RxSwiftMVVMTests.release.xcconfig"; sourceTree = "<group>"; };
 		BFAABC813925A814E1E24E40 /* libPods-RxSwiftMVVMTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RxSwiftMVVMTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE090F0F28E4BD6200FF0F34 /* GitnubDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitnubDetailViewController.swift; sourceTree = "<group>"; };
+		CE090F1128E4BD6C00FF0F34 /* GitnubDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitnubDetailViewModel.swift; sourceTree = "<group>"; };
+		CE090F1328E4BD7500FF0F34 /* GitnubDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitnubDetailRouter.swift; sourceTree = "<group>"; };
+		CE090F1628E4BDD200FF0F34 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		CE19983528B3C8A300C06F24 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		CE19983A28B3CD8700C06F24 /* GithubCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubCoordinator.swift; sourceTree = "<group>"; };
 		CE19983C28B3D6FD00C06F24 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
@@ -120,6 +128,24 @@
 				88A3FF9F848FADC27CBF0DAB /* Pods-RxSwiftMVVMTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		CE090F0E28E4BD3E00FF0F34 /* GithubDetail */ = {
+			isa = PBXGroup;
+			children = (
+				CE090F0F28E4BD6200FF0F34 /* GitnubDetailViewController.swift */,
+				CE090F1128E4BD6C00FF0F34 /* GitnubDetailViewModel.swift */,
+				CE090F1328E4BD7500FF0F34 /* GitnubDetailRouter.swift */,
+			);
+			path = GithubDetail;
+			sourceTree = "<group>";
+		};
+		CE090F1528E4BDC100FF0F34 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				CE090F1628E4BDD200FF0F34 /* ViewModelType.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		CE19983428B3C88A00C06F24 /* AppNavigation */ = {
@@ -193,6 +219,7 @@
 		CE7D761C26B14071002B98BC /* RxSwiftMVVM */ = {
 			isa = PBXGroup;
 			children = (
+				CE090F1528E4BDC100FF0F34 /* Base */,
 				CE19983428B3C88A00C06F24 /* AppNavigation */,
 				CEC7D5E728AD324D005C220C /* UIComponents */,
 				CEC7D5DD28AABDE2005C220C /* Scenes */,
@@ -208,6 +235,7 @@
 		CEC7D5DD28AABDE2005C220C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				CE090F0E28E4BD3E00FF0F34 /* GithubDetail */,
 				CEC7D5DE28AABDF5005C220C /* SearchScene */,
 				CEC7D5E528AAC024005C220C /* BaseRouter.swift */,
 			);
@@ -449,12 +477,16 @@
 				CE6B72EB289EA603007E958D /* RepositoryOwnerDTO.swift in Sources */,
 				CEC7D5E928AD325F005C220C /* LoaderView.swift in Sources */,
 				CE6B72F2289EC3E5007E958D /* GithubService.swift in Sources */,
+				CE090F1028E4BD6200FF0F34 /* GitnubDetailViewController.swift in Sources */,
 				CE6B72F0289EC352007E958D /* BaseServiceProtocol.swift in Sources */,
+				CE090F1728E4BDD200FF0F34 /* ViewModelType.swift in Sources */,
 				CE7D761E26B14071002B98BC /* AppDelegate.swift in Sources */,
 				CE19983B28B3CD8700C06F24 /* GithubCoordinator.swift in Sources */,
+				CE090F1228E4BD6C00FF0F34 /* GitnubDetailViewModel.swift in Sources */,
 				CEC7D5E228AABE1B005C220C /* SearchViewModel.swift in Sources */,
 				CE19983D28B3D6FD00C06F24 /* CoordinatorProtocol.swift in Sources */,
 				CEC7D5E628AAC024005C220C /* BaseRouter.swift in Sources */,
+				CE090F1428E4BD7500FF0F34 /* GitnubDetailRouter.swift in Sources */,
 				CE6B72E9289EA5E9007E958D /* RepositoryDTO.swift in Sources */,
 				CE6B72F6289EC4BE007E958D /* ApiProvider.swift in Sources */,
 				CE6B72F4289EC456007E958D /* Path.swift in Sources */,

@@ -35,7 +35,7 @@ public final class MainCoordinator: CoordinatorProtocol {
         [githubCoordinator].forEach {
             allStories.append($0.initStory())
         }
-        tabBarController.viewControllers = [githubCoordinator.initStory()]
+        tabBarController.viewControllers = allStories
         tabBarController.viewControllers?.forEach({
             $0.view.backgroundColor = .secondarySystemBackground
         })
