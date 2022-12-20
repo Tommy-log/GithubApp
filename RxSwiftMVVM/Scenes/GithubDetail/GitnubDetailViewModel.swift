@@ -11,10 +11,13 @@ import RxSwift
 final class GithubDetailViewModel: ViewModelType {
     
     private let repositoryOwnerModel: RepositoryOwnerDTO
+    private var githubService: GihubService
+    private let imagePublish = PublishSubject<UIImage>()
+    private var image: UIImage?
     
-    init(repositoryOwnerModel: RepositoryOwnerDTO) {
+    init(repositoryOwnerModel: RepositoryOwnerDTO, githubService: GihubService) {
         self.repositoryOwnerModel = repositoryOwnerModel
-        print(repositoryOwnerModel)
+        self.githubService = githubService
     }
     
     struct Input {
@@ -22,11 +25,11 @@ final class GithubDetailViewModel: ViewModelType {
     }
     
     struct Output {
-        
+        let ownerImageObservable: Observable<UIImage>
     }
     
     func transform(input: Input) -> Output {
-        return Output()
+        return Output(ownerImageObservable: githubService.loadImage(imageUrl: repositoryOwnerModel.avatarUrl))
     }
 }
 

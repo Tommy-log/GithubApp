@@ -10,4 +10,5 @@ import RxSwift
 
 protocol GihubService: BaseServiceProtocol {
     func getRepositories(repoID: String, completion: @escaping (() -> Void)) -> Observable<[RepositoryDTO]>
+    func loadImage(imageUrl: String) -> Observable<UIImage>
 }

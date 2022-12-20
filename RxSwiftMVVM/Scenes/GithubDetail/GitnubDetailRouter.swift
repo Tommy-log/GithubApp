@@ -24,7 +24,7 @@ public final class GithubDetailRouter: GithubDetailRouterProtocol {
     }
     
     public func initScene() -> UIViewController {
-        let viewModel = GithubDetailViewModel(repositoryOwnerModel: injectedModel)
+        let viewModel = GithubDetailViewModel(repositoryOwnerModel: injectedModel, githubService: appService.githubService())
         let vc = GitnubDetailViewController(viewModel: viewModel)
         return vc
     }

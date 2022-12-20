@@ -50,14 +50,6 @@ class SearchViewModel: ViewModelType {
                return self.githubService.getRepositories(repoID: text, completion: completion)
             }).asDriver(onErrorJustReturn: [])
         
-        
-//        let tableViewTap = input.tableViewCellSelected.flatMapLatest { indexPath -> Observable<RepositoryOwnerDTO> in
-//            return Observable.create { observer in
-//                observer.onNext(self.allRepositories[indexPath.row].owner)
-//                return Disposables.create()
-//            }
-//        }
-        
         return Output(activateLoadStatePublisher: loadStateActivatePublish, showHintPublisher: showHintPublish)
     }
 }

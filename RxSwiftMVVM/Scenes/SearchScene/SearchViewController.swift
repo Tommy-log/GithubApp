@@ -11,14 +11,14 @@ import RxCocoa
 
 
 class SearchViewController: UIViewController {
-
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.rx.setDelegate(self).disposed(by: disposedBag)
-       return tableView
+        return tableView
     }()
     private lazy var myButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.setTitle("Done", for: .normal)
         return button
     }()
@@ -30,7 +30,7 @@ class SearchViewController: UIViewController {
     }()
     
     private lazy var myTextField: UITextField = {
-       let textField = UITextField()
+        let textField = UITextField()
         textField.layer.cornerRadius = 10
         textField.backgroundColor = .secondarySystemFill
         textField.textColor = .secondaryLabel
@@ -127,9 +127,9 @@ class SearchViewController: UIViewController {
         output.activateLoadStatePublisher
             .debounce(.seconds(0), scheduler: MainScheduler.instance)
             .subscribe { [unowned self] isActive in
-            guard let isActive = isActive.element else { return }
-            self.activateLoadState(isActive)
-        }.disposed(by: disposedBag)
+                guard let isActive = isActive.element else { return }
+                self.activateLoadState(isActive)
+            }.disposed(by: disposedBag)
         output.showHintPublisher
             .debounce(.seconds(0), scheduler: MainScheduler.instance)
             .map({ !$0 })
@@ -144,10 +144,12 @@ class SearchViewController: UIViewController {
         }
         
         guard let data = viewModel.repositoriesData else { return }
-        tableView.rx.modelSelected(RepositoryDTO.self).subscribe { event in
-            guard let injectedModel = event.element?.owner else { return }
-            self.router?.pushDetail(injectedModel: injectedModel)
-        }.disposed(by: disposedBag)
+        Observable.zip(tableView.rx.modelSelected(RepositoryDTO.self), tableView.rx.itemSelected)
+            .bind { [unowned self] model, indexPath in
+                self.tableView.deselectRow(at: indexPath, animated: false)
+                self.router?.pushDetail(injectedModel: model.owner)
+            }
+            .disposed(by: disposedBag)
         data.asObservable().bind(to: tableView.rx.items(cellIdentifier: "basicCell", cellType: UITableViewCell.self)) { identifire, repository, cell in
             cell.textLabel?.text = repository.name
         }.disposed(by: disposedBag)
