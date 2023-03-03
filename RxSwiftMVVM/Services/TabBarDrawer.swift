@@ -77,9 +77,9 @@ public class TabBarDrawer {
         let animation = CABasicAnimation(keyPath: "path")
         let path = createPath()
         animation.duration = 0.2
-        animation.toValue = path
+        animation.fromValue = caShapeLayer?.path
+        caShapeLayer?.path = path
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
-
         animation.fillMode = CAMediaTimingFillMode.forwards
         animation.isRemovedOnCompletion = false
         caShapeLayer?.add(animation, forKey: "path")
