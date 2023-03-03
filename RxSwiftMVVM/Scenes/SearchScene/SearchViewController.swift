@@ -139,6 +139,7 @@ class SearchViewController: UIViewController {
     
     private func bindTableView() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "basicCell")
+        tableView.backgroundColor = .secondarySystemBackground
         guard let viewModel = viewModel else {
             return
         }

@@ -16,7 +16,7 @@ public class TabBarDrawer {
     private var circleCenter: CGPoint
     private var beforCiclePoint: CGPoint
     private let beetweenInset: CGFloat
-    private let itemsCount = 3
+    private var itemsCount = 3
     private var caShapeLayer: CAShapeLayer?
     private var tabBar: UITabBar?
     var selectedItem = 1 {
@@ -45,6 +45,8 @@ public class TabBarDrawer {
         self.caShapeLayer = layer
         tabBar.itemWidth = itemWidth
         tabBar.itemPositioning = .centered
+        self.selectedItem = (tabBar.selectedItem?.tag ?? 0) + 1
+        self.itemsCount = tabBar.items?.count ?? 0
     }
     
     private func createLayer() -> CAShapeLayer {
