@@ -10,42 +10,18 @@ import UIKit
 
 public final class MainCoordinator: CoordinatorProtocol {
     
-    public let tabBarController: UITabBarController
+    let tabBarController: MainTabBarController
     private let appServices: ApiProvider
-    
-    private lazy var gitHubCoordinator: CoordinatorProtocol = GithubCoordinator(appServices: appServices)
     
     init(appServices: ApiProvider) {
         self.appServices = appServices
-        tabBarController = UITabBarController()
-        UITabBar.appearance().tintColor = .lightText
-        UITabBar.appearance().backgroundColor = .darkGray
-        tabBarController.selectedIndex = 0
-        prepareCoordinators(appService: appServices)
-        prepareTabBarItems()
+        UITabBar.appearance().tintColor = .black
+        UITabBar.appearance().barTintColor = .black
+        UITabBar.appearance().unselectedItemTintColor = .white
+        self.tabBarController = MainTabBarController(appServices: appServices)
     }
     
     func initStory() -> UIViewController {
         return tabBarController
-    }
-    
-    private func prepareCoordinators(appService: ApiProvider) {
-        let githubCoordinator = GithubCoordinator(appServices: appService)
-        var allStories: [UIViewController] = []
-        [githubCoordinator].forEach {
-            allStories.append($0.initStory())
-        }
-        tabBarController.viewControllers = allStories
-        tabBarController.viewControllers?.forEach({
-            $0.view.backgroundColor = .secondarySystemBackground
-        })
-    }
-    
-    private func prepareTabBarItems() {
-        if let firstItem = tabBarController.tabBar.items?[0] {
-            firstItem.title = nil
-            firstItem.image = UIImage(named: "githubIcon")?.withTintColor(.darkGray)
-            firstItem.selectedImage = UIImage(named: "githubIcon")?.withTintColor(.white)
-        }
     }
 }

@@ -17,6 +17,8 @@
 		CE19983628B3C8A300C06F24 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19983528B3C8A300C06F24 /* MainCoordinator.swift */; };
 		CE19983B28B3CD8700C06F24 /* GithubCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19983A28B3CD8700C06F24 /* GithubCoordinator.swift */; };
 		CE19983D28B3D6FD00C06F24 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19983C28B3D6FD00C06F24 /* CoordinatorProtocol.swift */; };
+		CE5A62EC29AF7A81006BE019 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A62EB29AF7A81006BE019 /* MainTabBarController.swift */; };
+		CE5A62EF29B0A0E0006BE019 /* TabBarDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A62EE29B0A0E0006BE019 /* TabBarDrawer.swift */; };
 		CE6B72E9289EA5E9007E958D /* RepositoryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B72E8289EA5E9007E958D /* RepositoryDTO.swift */; };
 		CE6B72EB289EA603007E958D /* RepositoryOwnerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B72EA289EA603007E958D /* RepositoryOwnerDTO.swift */; };
 		CE6B72EE289EC335007E958D /* GithubServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B72ED289EC335007E958D /* GithubServiceAPI.swift */; };
@@ -65,6 +67,8 @@
 		CE19983528B3C8A300C06F24 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		CE19983A28B3CD8700C06F24 /* GithubCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubCoordinator.swift; sourceTree = "<group>"; };
 		CE19983C28B3D6FD00C06F24 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
+		CE5A62EB29AF7A81006BE019 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		CE5A62EE29B0A0E0006BE019 /* TabBarDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarDrawer.swift; sourceTree = "<group>"; };
 		CE6B72E8289EA5E9007E958D /* RepositoryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDTO.swift; sourceTree = "<group>"; };
 		CE6B72EA289EA603007E958D /* RepositoryOwnerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryOwnerDTO.swift; sourceTree = "<group>"; };
 		CE6B72ED289EC335007E958D /* GithubServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubServiceAPI.swift; sourceTree = "<group>"; };
@@ -154,8 +158,17 @@
 				CE19983528B3C8A300C06F24 /* MainCoordinator.swift */,
 				CE19983A28B3CD8700C06F24 /* GithubCoordinator.swift */,
 				CE19983C28B3D6FD00C06F24 /* CoordinatorProtocol.swift */,
+				CE5A62EB29AF7A81006BE019 /* MainTabBarController.swift */,
 			);
 			path = AppNavigation;
+			sourceTree = "<group>";
+		};
+		CE5A62ED29B0A0CD006BE019 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CE5A62EE29B0A0E0006BE019 /* TabBarDrawer.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		CE6B72E5289EA5A7007E958D /* NetworkLayer */ = {
@@ -219,6 +232,7 @@
 		CE7D761C26B14071002B98BC /* RxSwiftMVVM */ = {
 			isa = PBXGroup;
 			children = (
+				CE5A62ED29B0A0CD006BE019 /* Services */,
 				CE090F1528E4BDC100FF0F34 /* Base */,
 				CE19983428B3C88A00C06F24 /* AppNavigation */,
 				CEC7D5E728AD324D005C220C /* UIComponents */,
@@ -483,11 +497,13 @@
 				CE7D761E26B14071002B98BC /* AppDelegate.swift in Sources */,
 				CE19983B28B3CD8700C06F24 /* GithubCoordinator.swift in Sources */,
 				CE090F1228E4BD6C00FF0F34 /* GitnubDetailViewModel.swift in Sources */,
+				CE5A62EF29B0A0E0006BE019 /* TabBarDrawer.swift in Sources */,
 				CEC7D5E228AABE1B005C220C /* SearchViewModel.swift in Sources */,
 				CE19983D28B3D6FD00C06F24 /* CoordinatorProtocol.swift in Sources */,
 				CEC7D5E628AAC024005C220C /* BaseRouter.swift in Sources */,
 				CE090F1428E4BD7500FF0F34 /* GitnubDetailRouter.swift in Sources */,
 				CE6B72E9289EA5E9007E958D /* RepositoryDTO.swift in Sources */,
+				CE5A62EC29AF7A81006BE019 /* MainTabBarController.swift in Sources */,
 				CE6B72F6289EC4BE007E958D /* ApiProvider.swift in Sources */,
 				CE6B72F4289EC456007E958D /* Path.swift in Sources */,
 				CE6B72EE289EC335007E958D /* GithubServiceAPI.swift in Sources */,

@@ -76,7 +76,7 @@ class SearchViewController: UIViewController {
     }
     
     func setupNavigationView() {
-        self.title = "REPOS SEARCHING"
+        self.navigationItem.title = "REPOS SEARCHING"
         self.navigationItem.rightBarButtonItem = infoButton
     }
     
